@@ -4,8 +4,8 @@
 
 int main() {
     FILE* ptr;
-    ptr = fopen("file.txt" , "r");
     int a , b , c;
+    ptr = fopen("file.txt" , "r"); // Assuming file.txt exist with content as 3 number with space.
 
     fscanf(ptr , "%d" , &a);
     fscanf(ptr , "%d" , &b);
