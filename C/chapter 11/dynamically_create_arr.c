@@ -5,7 +5,6 @@
 
 int main() {
     int length = 6;
-    // int arr[length];
     int* ptr;
     ptr = (int*)malloc(length * sizeof(int));
 
