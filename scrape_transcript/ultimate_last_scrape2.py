@@ -4,7 +4,7 @@ import time
 from collections import OrderedDict
 
 COOKIE_FILE = "cookies.json"
-TARGET_URL = "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/14270?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F14270%2Factivity%2F723958%3FfilterOnDatesAndDepth%3D1"
+TARGET_URL = ""
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False)
@@ -112,7 +112,7 @@ with sync_playwright() as p:
 
 
 
-        time.sleep(1)  # Give time for new lines to load
+        time.sleep(0.1)  # Give time for new lines to load
         scroll_attempts += 1
 
     with open("transcript.txt", "w", encoding="utf-8") as f:
@@ -120,5 +120,5 @@ with sync_playwright() as p:
             f.write(f"{ts} {text}\n")
 
     print(f"✅ Transcript saved. Total lines: {len(transcript_dict)}")
-    input("Press ENTER to exit...")
-    # browser.close()
+    # input("Press ENTER to exit...")
+    browser.close()

@@ -1,3 +1,6 @@
+# given a data set with gender, years of exp and if they are hired or not by AI. 
+# We have to determine if the hiring is biased on any gender or years of exp? 
+
 import pandas as pd
 
 df = pd.read_csv('job_applicants_dataset.csv')
@@ -20,3 +23,5 @@ print("Total Female applicants hired:", femaleLen)
 print(f"female to male  hiring Ratio- 1:{maleLen/femaleLen:.2f}")
 
 print("\nSince male get hired over 5 times than female, thus hiring was biased towards male applicants.")
+
+# PASSWORD = "ED25519_Mlon_Eusk_company!"

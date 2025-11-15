@@ -1,16 +1,16 @@
 from playwright.sync_api import sync_playwright
 
-uin_email = "2414503623@mujonline.edu.in" 
+email = "" 
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False)
     page = browser.new_page()
 
     print("Opening login page...")
-    page.goto("https://learning.onlinemanipal.com")
+    page.goto("") # enter the link
 
     # Fill UIN/email
-    page.fill('input[type="email"]', uin_email)
+    page.fill('input[type="email"]', email)
 
     
     print("Please finish login manually (SSO, password, etc.)")
@@ -22,7 +22,7 @@ with sync_playwright() as p:
     # input("Press ENTER here when you're fully logged in and on dashboard...")
 
     # # Now go to target course page
-    # target_url = "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/14270?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F14270%2Factivity%2F723958%3FfilterOnDatesAndDepth%3D1"
+    # target_url = ""
     # page.goto(target_url)
     # page.wait_for_load_state("networkidle")
 

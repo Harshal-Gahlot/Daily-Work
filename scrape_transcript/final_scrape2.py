@@ -5,7 +5,7 @@ import json
 COOKIE_FILE = "cookies.json"
 
 # Update this with the URL of the page to scrape
-TARGET_URL = "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/14270?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F14270%2Factivity%2F723958%3FfilterOnDatesAndDepth%3D1"
+TARGET_URL = ""
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False)

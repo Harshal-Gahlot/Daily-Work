@@ -32,7 +32,7 @@ with sync_playwright() as p:
     page = context.new_page()
 
     # Go to target page
-    page.goto("https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/14270?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F14270%2Factivity%2F723958%3FfilterOnDatesAndDepth%3D1")
+    page.goto("")
     page.wait_for_load_state("networkidle")
     
     # Click Transcript button
