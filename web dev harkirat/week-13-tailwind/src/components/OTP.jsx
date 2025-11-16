@@ -39,7 +39,7 @@ function SubOtpBox({ reference, refer, idx, inputBoxVal, setInputBoxVal, setDisa
             value={inputBoxVal[idx]}
             ref={reference}
             onKeyUp={(e) => {
-                if (e.key == "Backspace") {
+                if (e.key === "Backspace") {
                     setDisabled(true);
                     // last digit case when all digits are filled; on backspace, cursor don't move, only current digit is emptied. 
                     if (idx + 1 == inputBoxVal.length && inputBoxVal[arrLen - 1] != "") {
@@ -53,19 +53,26 @@ function SubOtpBox({ reference, refer, idx, inputBoxVal, setInputBoxVal, setDisa
                     else {
                         setInputBoxVal((prev) => {
                             const copy = [...prev];
-                            copy[idx] = "";
-                            copy[idx - 1] = "";
+                            if (inputBoxVal[idx] !== "") copy[idx] = "";
+                            else copy[idx - 1] = "";
                             return copy;
                         });
+
                         if (idx == 0) return;
-                        refer.current[idx - 1].focus(); // go to previous sub otp box to get next digit
+                        if (inputBoxVal[idx] === "") refer.current[idx - 1].focus(); // go to previous sub otp box to get next digit
                     }
+                }
+                if (e.key === "ArrowLeft") {
+                    if (idx !== 0) refer.current[idx - 1].focus(); // go to previous sub otp box to get next digit
+                }
+                if (e.key === "ArrowRight") {
+                    if (idx + 1 !== arrLen) refer.current[idx + 1].focus(); // go to previous sub otp box to get next digit
                 }
             }}
 
             onChange={(e) => {
                 const inputDigit = e.target.value;
-                // cheking if input is digit 0-9 value by comparing ascii value
+                // checking if input is digit 0-9 value by comparing ascii value
                 if (48 <= inputDigit.charCodeAt(0) && inputDigit.charCodeAt(0) <= 57) {
                     setInputBoxVal((prev) => {
                         const copy = [...prev];
@@ -73,11 +80,11 @@ function SubOtpBox({ reference, refer, idx, inputBoxVal, setInputBoxVal, setDisa
                         return copy;
                     });
                     // enable the continue btn when all digits are provided
-                    if (idx + 1 >= arrLen) {
+                    if (inputBoxVal.filter(n => n == "").length <= 1) {
                         setDisabled(false);
                         return;
                     };
-                    refer.current[idx + 1].focus(); // go to next sub otp box to get next digit
+                    if (idx + 1 !== arrLen) refer.current[idx + 1].focus(); // go to next sub otp box to get next digit
                 }
             }}
             type="text" className="px-4 w-[42px] h-[50px] outline-none font-bold rounded-2xl text-black bg-white" />
