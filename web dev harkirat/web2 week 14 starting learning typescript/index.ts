@@ -1,5 +1,15 @@
-function sum(a: number, b: number) {
-    return a + b;
+interface People {
+    name: string,
+    age: number,
+    greet(): string
 }
 
-let c: number = sum(1, 2);
+const people: People = {
+    name: "harshal",
+    age: 69,
+    greet
+}
+
+function greet(): string {
+    return "hello"
+}
