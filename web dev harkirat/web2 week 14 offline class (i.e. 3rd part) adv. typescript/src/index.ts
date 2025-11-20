@@ -1,24 +1,55 @@
-interface User {
-    id: string;
-    name: string;
-    age: string;
-    email: string;
-    password: string;
-}
+// import {z} from 'zod'
 
-// use Pick to pick only few items from interface or type, by doin' so we still only hv 1 singe source of truth
-type toUpdateUser = Pick<User, "name" | "age" | "email" | "password">;
+// const userSchema = z.string();
 
-// type given Partial will all be optional, i.e. ts will not throw error even if I don't provide it with one or all values. 
-type toUpdateUserOptional = Partial<toUpdateUser>;
-// it's similar to "?" operator except it's for custom types.
+// export type FinalUserSchema = z.infer<typeof userSchema>
+// we export this when we are using mono repos to frontend to validate at frontend runtime.
 
-const displayUsers = (user: toUpdateUserOptional) => {
-    console.log("user.name", user.name);
-    console.log("user.email", user.email);
-};
 
-// no error:
-displayUsers({
-    name:"abc",
-})
+
+
+// type EventType = 'click' | 'scroll' | 'mousemove';
+
+// type ExcludeEventType = Exclude<EventType, 'scroll'>
+
+// const handleEvent = (event: ExcludeEventType) => {
+//     console.log('event', event)
+// }
+
+// handleEvent('click')
+// handleEvent('scroll') // throws error
+
+
+
+
+// const users = new Map<string, number>()
+// users.set("res", 4)
+// users.set("pec", 5)
+
+// const user = users.get("res")
+// console.log('user', user)
+
+
+// Record(below) vs Map(above) are two clean ways to do Objects
+
+
+
+// type User = {
+//     age: number;
+//     name: string;
+// };
+
+// // not great/clear way
+// // type Users = {
+// //     [id: string]: User;
+// // };
+
+// // better/clear way to do:
+// type Users = Record<string, User>
+
+// const users: Users = {
+//     "123": {age: 12, name: "123"},
+//     "321": {age: 13, name: "abc"}
+// }
+
+// console.log('users', users)
